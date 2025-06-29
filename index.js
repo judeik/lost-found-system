@@ -8,13 +8,13 @@ const path = require('path');
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-
+const authRoutes = require('./routes/auth');
 
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB Atlas (no need for deprecated options)
@@ -36,7 +36,13 @@ mongoose.connect(process.env.MONGODB_URL)
 const itemRoutes = require('./routes/items');
 app.use('/api/items', itemRoutes);
 
+// Serve static files
 // Default route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'landing.html'));
+});
+
+// Dashboard
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });

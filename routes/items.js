@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Item = require('../models/Item');
+const protect = require('../middleware/authMiddleware');
 
 // Create a new item
-router.post('/', async (req, res) => {
+router.post('/', protect, async (req, res) => {
     try {
         const item = new Item(req.body);
         await item.save();
