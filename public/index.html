@@ -3,41 +3,208 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome - Lost & Found</title>
+  <title>Welcome - Campus Lost & Found</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background: linear-gradient(to right, #007bff, #6c63ff);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-    .card {
-      background-color: rgba(255, 255, 255, 0.95);
-      color: #333;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-    }
-  </style>
 </head>
 <body>
-  <div class="container text-center">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <div class="card p-4 shadow-lg rounded">
-          <h1 class="mb-4">Campus Lost & Found</h1>
-          <p class="lead">Easily report, find, and claim lost items on campus.</p>
-          <div class="d-grid gap-2 mt-4">
-            <a href="login.html" class="btn btn-primary btn-lg">Login</a>
-            <a href="register.html" class="btn btn-outline-primary btn-lg">Register</a>
-            <a href="lostItems.html" class="btn btn-link">View Lost Items</a>
+
+  <!-- Hero Section -->
+  <section class="bg-primary text-white text-center p-5">
+    <div class="container">
+      <h1 class="display-4">Campus Lost & Found System</h1>
+      <p class="lead">Helping students and staff recover lost items quickly and easily.</p>
+      <a href="login.html" class="btn btn-light me-2">Login</a>
+      <a href="register.html" class="btn btn-outline-light">Register</a>
+      <a href="dashboard.html" class="btn btn-danger">View Lost Items</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="container py-5">
+    <h2 class="mb-4 text-center">What Users Say</h2>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="card p-3">
+          <p>“I lost my ID card and found it the next morning thanks to this platform.” – Grace, Student</p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="card p-3">
+          <p>“It makes tracking lost property much easier for the security unit.” – Officer Kalu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Frequently Asked Questions</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+              Who can use the system?
+            </button>
+          </h2>
+          <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Both students and staff members can log or retrieve lost items.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+              How long are items kept?
+            </button>
+          </h2>
+          <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Items are held securely for up to 30 days before being archived or donated.
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="container py-5">
+    <h2 class="mb-4 text-center">Contact Us</h2>
+    <form id="contactForm" novalidate>
+      <div class="mb-3">
+        <label for="contactName" class="form-label">Name</label>
+        <input type="text" id="contactName" class="form-control" placeholder="Your Name" required />
+        <div class="invalid-feedback">Name is required.</div>
+      </div>
+      <div class="mb-3">
+        <label for="contactEmail" class="form-label">Email</label>
+        <input type="email" id="contactEmail" class="form-control" placeholder = "Your Email" required />
+           <div class="invalid-feedback">Valid email is required.</div>
+      </div>
+      <div class="mb-3">
+        <label for="contactMessage" class="form-label">Message</label>
+        <textarea id="contactMessage" class="form-control" rows="4" placeholder = "Your Message" required></textarea>
+            <div class="invalid-feedback">Message is required.</div>
+      </div>
+      <!-- Google reCAPTCHA -->
+      <!-- <div class="g-recaptcha my-3" data-sitekey="6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K"></div> -->
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="bg-dark text-white text-center p-4">
+    <h4>Subscribe to Our Newsletter</h4>
+    <form id="newsletterForm" novalidate class="container d-flex flex-column flex-md-row justify-content-center mt-3" style="gap: 10px;">
+      <input type="email" id="newsletterEmail" class="form-control w-50" placeholder="Enter your email" required />
+      <!-- Google reCAPTCHA -->
+      <!-- <div class="g-recaptcha my-2" data-sitekey="6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K"></div> -->
+      <button type="submit" class="btn btn-outline-light">Subscribe</button>
+      <div class="invalid-feedback">Please enter a valid email.</div>
+    </form>
+  </section>
+
+  <footer class="bg-light text-center p-3">
+    &copy; 2025 Campus Lost & Found. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K"></script>
+
+<script>
+  const SITE_KEY = "6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K"; // Replace with your reCAPTCHA v3 site key
+
+  // Helper: Show validation message
+  function showInvalid(input, message) {
+    input.classList.add('is-invalid');
+    input.nextElementSibling.textContent = message;
+  }
+
+  // Contact Form Submission
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contactName');
+      const email = document.getElementById('contactEmail');
+      const message = document.getElementById('contactMessage');
+
+      name.classList.remove('is-invalid');
+      email.classList.remove('is-invalid');
+      message.classList.remove('is-invalid');
+
+      if (!name.value.trim()) return showInvalid(name, 'Name is required.');
+      if (!email.value.trim()) return showInvalid(email, 'Email is required.');
+      if (!message.value.trim()) return showInvalid(message, 'Message is required.');
+
+      grecaptcha.ready(async () => {
+        try {
+          const token = await grecaptcha.execute(SITE_KEY, { action: 'submit_contact' });
+
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name.value,
+              email: email.value,
+              message: message.value,
+              recaptchaToken: token
+            })
+          });
+
+          if (res.ok) {
+            window.location.href = '/thank-you.html';
+          } else {
+            const data = await res.json();
+            alert(data.error || 'Something went wrong.');
+          }
+        } catch {
+          alert('Could not reach server.');
+        }
+      });
+    });
+  }
+
+  // Newsletter Form Submission
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail');
+      email.classList.remove('is-invalid');
+
+      if (!email.value.trim()) return showInvalid(email, 'Email is required.');
+
+      grecaptcha.ready(async () => {
+        try {
+          const token = await grecaptcha.execute(SITE_KEY, { action: 'subscribe_newsletter' });
+
+          const res = await fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: email.value,
+              recaptchaToken: token
+            })
+          });
+
+          if (res.ok) {
+            alert('Thanks for subscribing!');
+            newsletterForm.reset();
+          } else {
+            const data = await res.json();
+            alert(data.error || 'Subscription failed.');
+          }
+        } catch {
+          alert('Server error. Try again.');
+        }
+      });
+    });
+  }
+</script>
+
 </body>
 </html>

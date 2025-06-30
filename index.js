@@ -1,8 +1,17 @@
+const dotenv = require('dotenv');
+
+// Check environment variables
+// if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+//   console.error('EMAIL_USER and EMAIL_PASS must be set in .env');
+//   process.exit(1);
+// }
+
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
+const contactRoutes = require('./routes/contact');
+const newsletterRoutes = require('./routes/newsletter');
 
 // Initialize express app
 dotenv.config();
@@ -16,6 +25,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/contact', contactRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 // Connect to MongoDB Atlas (no need for deprecated options)
 mongoose.connect(process.env.MONGODB_URL)

@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
 
     const user = await User.create({ name, email, password });
 
-     // ✅ Now generate token with the created user
+     // Now generate token with the created user
     const token = generateToken(user);
     
     res.status(201).json({
