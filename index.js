@@ -1,10 +1,15 @@
 const dotenv = require('dotenv');
+dotenv.config(); // Load .env variables FIRST
 
 // Check environment variables
-// if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-//   console.error('EMAIL_USER and EMAIL_PASS must be set in .env');
-//   process.exit(1);
-// }
+if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  console.error('EMAIL_USER and EMAIL_PASS must be set in .env');
+  process.exit(1);
+}
+
+// Optional for debugging
+// console.log('EMAIL_USER:', process.env.EMAIL_USER);
+// console.log('EMAIL_PASS:', process.env.EMAIL_PASS); // Optional for debugging
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,7 +19,7 @@ const contactRoutes = require('./routes/contact');
 const newsletterRoutes = require('./routes/newsletter');
 
 // Initialize express app
-dotenv.config();
+// dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const authRoutes = require('./routes/auth');
