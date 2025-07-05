@@ -53,4 +53,20 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  try {
+    const { claimed, claimedBy } = req.body;
+    const item = await Item.findById(req.params.id);
+    if (!item) return res.status(404).json({ error: 'Item not found' });
+
+    item.claimed = claimed;
+    item.claimedBy = claimedBy || null;
+
+    const updated = await item.save();
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: 'Update failed' });
+  }
+});
+
 module.exports = router;

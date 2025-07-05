@@ -28,7 +28,7 @@
   </div>
 
   <script>
-    const API = 'http://localhost:3000/api/auth/register';
+    const API = 'http://localhost:9500/api/auth/register';
 
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -54,5 +54,43 @@
       }
     });
   </script>
+  <form id="registerForm">
+  <!-- name, email, password fields... -->
+  <button type="submit">Register</button>
+</form>
+
+<!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K"></script>
+<script>
+  // const SITE_KEY = "6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K"; // Replace with your reCAPTCHA v3 site key
+  const registerForm = document.getElementById('registerForm');
+  registerForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    grecaptcha.ready(function () {
+      grecaptcha.execute('6LeQMHMrAAAAAFDCe_ZK97nc_2iTBnPATKpXdv7K', { action: 'register' }).then(function (token) {
+        // Add token to the form data
+        const data = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          recaptchaToken: token
+        };
+
+        fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) alert(data.error);
+          else window.location.href = '/dashboard';
+        })
+        .catch(() => alert('Registration failed.'));
+      });
+    });
+  });
+</script>
+
 </body>
 </html>

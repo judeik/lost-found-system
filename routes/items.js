@@ -35,6 +35,16 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// GET all items with claimedBy details
+router.get('/', async (req, res) => {
+  try {
+    const items = await Item.find().populate('claimedBy', 'name email role');
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 // Update an item (mark as claimed or edit)
 router.put('/:id', async (req, res) => {
     try {

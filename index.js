@@ -21,7 +21,7 @@ const newsletterRoutes = require('./routes/newsletter');
 // Initialize express app
 // dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9500;
 const authRoutes = require('./routes/auth');
 
 
